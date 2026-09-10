@@ -29,7 +29,10 @@ function canvasToWorld(clientX, clientY) {
   const scaleY = canvas.height / rect.height;
   const cx = (clientX - rect.left) * scaleX;
   const cy = (clientY - rect.top) * scaleY;
-  return { x: cx / TILE, y: cy / TILE, tx: Math.floor(cx / TILE), ty: Math.floor(cy / TILE) };
+  // Convert viewport pixels → world tiles using camera offset
+  const wx = (cx + world.camX) / TILE;
+  const wy = (cy + world.camY) / TILE;
+  return { x: wx, y: wy, tx: Math.floor(wx), ty: Math.floor(wy) };
 }
 
 function setMarker(wx, wy) {
@@ -210,7 +213,14 @@ function tick(ts) {
 
   // draw
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  world.render(ctx, player, marker && (player.walking || now < markerUntil) ? marker : null, now);
+  world.render(
+    ctx,
+    player,
+    marker && (player.walking || now < markerUntil) ? marker : null,
+    now,
+    canvas.width,
+    canvas.height,
+  );
 
   requestAnimationFrame(tick);
 }
