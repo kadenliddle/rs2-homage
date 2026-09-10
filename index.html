@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>Grovehaven Skilling Grounds</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div id="app">
+    <header id="topbar">
+      <h1>Grovehaven Skilling Grounds</h1>
+      <p class="tagline">Unofficial fan homage · original art &amp; names</p>
+    </header>
+
+    <div id="main">
+      <div id="viewport-wrap">
+        <canvas id="game" width="480" height="352" aria-label="Game map"></canvas>
+        <div id="action-bar" class="hidden">
+          <div id="action-label">Working…</div>
+          <div id="action-track"><div id="action-fill"></div></div>
+        </div>
+      </div>
+
+      <aside id="panels">
+        <section class="panel" id="skills-panel">
+          <h2>Skills</h2>
+          <div class="skill-row" data-skill="woodcutting">
+            <span class="skill-name">Woodcutting</span>
+            <span class="skill-level" id="wc-level">1</span>
+            <div class="xp-track"><div class="xp-fill" id="wc-xp"></div></div>
+            <span class="xp-text" id="wc-xp-text">0 XP</span>
+          </div>
+          <div class="skill-row" data-skill="mining">
+            <span class="skill-name">Mining</span>
+            <span class="skill-level" id="mining-level">1</span>
+            <div class="xp-track"><div class="xp-fill" id="mining-xp"></div></div>
+            <span class="xp-text" id="mining-xp-text">0 XP</span>
+          </div>
+        </section>
+
+        <section class="panel" id="inv-panel">
+          <h2>Inventory <span id="inv-count">(0/28)</span></h2>
+          <div id="inventory-grid"></div>
+        </section>
+      </aside>
+    </div>
+
+    <footer id="chat-panel" class="panel">
+      <h2 class="sr-only">Activity log</h2>
+      <div id="chat-log" role="log" aria-live="polite"></div>
+    </footer>
+  </div>
+
+  <script type="module" src="js/game.js"></script>
+</body>
+</html>
