@@ -28,7 +28,7 @@ ES modules need a static server — opening `index.html` via `file://` may be bl
 
 ### Sandbox loop
 
-1. Walk the outdoor map (grass, stone paths, water).
+1. Explore the outdoor map (~64×48 tiles; camera follows you). Grass, dirt, stone paths, ponds.
 2. Chop **Ashgrove Trees** → **Ashgrove Logs** + **Woodcutting** XP (progress bar).
 3. Mine **Copper Seams** → **Copper Seam Ore** + **Mining** XP.
 4. Click the **Waybank Booth** to deposit your inventory.
@@ -51,7 +51,7 @@ rs2-homage/
   js/
     config.js    # map, XP curve, Ashgrove / Copper / Waybank names
     sprites.js   # procedural pixel art
-    world.js     # collision, render, respawn
+    world.js     # collision, camera, render, respawn
     player.js    # walk, inventory, skills
     ui.js        # panels + chat
     game.js      # input + main loop
@@ -61,10 +61,10 @@ rs2-homage/
 
 ## Known limits
 
-- One outdoor map; no combat, quests, or multiplayer.
+- One outdoor map (~64×48 tiles, fixed 30×22 viewport with camera follow); no combat, quests, or multiplayer.
 - Straight-line walk with axis slide (not full A* pathfinding).
 - Inventory items are unstackable in this slice (so the bank loop is reachable).
-- Procedural rectangle sprites only — intentionally chunky / low-res.
+- Original procedural pixel sprites (nearest-neighbor); not ripped RS assets.
 
 ## Intent
 
